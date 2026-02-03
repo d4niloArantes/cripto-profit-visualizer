@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profit Pulse - Universal Crypto Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <h1 class="app-title">Profit Pulse</h1>
+            <p class="app-subtitle">Universal Crypto Gain/Loss Calculator</p>
+        </header>
+
+        <!-- Calculator Container -->
+        <div class="calculator">
+            <!-- Input Section -->
+            <div class="input-section">
+                <div class="input-group">
+                    <label for="coin-dropdown" class="input-label">Select Cryptocurrency</label>
+                    <div class="coin-dropdown-container">
+                        <div class="coin-dropdown" id="coin-dropdown">
+                            <div class="dropdown-selected" id="dropdown-selected">
+                                <span class="selected-coin" id="selected-coin">
+                                    <span class="coin-symbol">Select coin...</span>
+                                    <span class="coin-name"></span>
+                                </span>
+                                <svg class="dropdown-arrow" width="12" height="8" viewBox="0 0 12 8" fill="none">
+                                    <path d="M1 1.5L6 6.5L11 1.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                            <div class="dropdown-content" id="dropdown-content">
+                                <div class="dropdown-search">
+                                    <svg class="search-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                        <path d="M7.333 12.667A5.333 5.333 0 1 0 7.333 2a5.333 5.333 0 0 0 0 10.667ZM14 14l-2.9-2.9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                    <input 
+                                        type="text" 
+                                        id="coin-search" 
+                                        class="search-input" 
+                                        placeholder="Search cryptocurrencies..."
+                                        autocomplete="off"
+                                    >
+                                </div>
+                                <div class="dropdown-options" id="dropdown-options">
+                                    <div class="loading-message" id="loading-message">
+                                        <div class="spinner"></div>
+                                        <span>Loading cryptocurrencies...</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label for="investment" class="input-label">Initial Investment</label>
+                    <div class="currency-input">
+                        <span class="currency-symbol">$</span>
+                        <input 
+                            type="number" 
+                            id="investment" 
+                            class="input-field investment-input" 
+                            placeholder="10000"
+                            min="0"
+                            step="0.01"
+                        >
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label for="purchase-price" class="input-label">Price Paid per Token</label>
+                    <div class="currency-input">
+                        <span class="currency-symbol">$</span>
+                        <input 
+                            type="number" 
+                            id="purchase-price" 
+                            class="input-field purchase-price-input" 
+                            placeholder="50000"
+                            min="0"
+                            step="0.000001"
+                        >
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label for="target-price" class="input-label">Future Price Goal</label>
+                    <div class="currency-input">
+                        <span class="currency-symbol">$</span>
+                        <input 
+                            type="number" 
+                            id="target-price" 
+                            class="input-field target-price-input" 
+                            placeholder="100000"
+                            min="0"
+                            step="0.000001"
+                        >
+                    </div>
+                </div>
+            </div>
+
+            <!-- Output Section -->
+            <div class="output-section">
+                <div class="output-card">
+                    <div class="output-item tokens-acquired">
+                        <span class="output-label">Total Tokens Acquired</span>
+                        <span class="output-value" id="tokens-owned">0</span>
+                    </div>
+
+                    <div class="output-item profit-loss">
+                        <span class="output-label">Potential Profit/Loss</span>
+                        <span class="output-value profit-loss-value" id="profit-loss">$0.00</span>
+                    </div>
+
+                    <div class="output-item total-value">
+                        <span class="output-label">Total Value at Target Price</span>
+                        <span class="output-value" id="total-value">$0.00</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="coingecko-service.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
